@@ -82,6 +82,9 @@ Please configure your own Firebase project before running the app.
 To provide a reliable and fast emergency response system that enhances women's safety using modern mobile and cloud technologies.
 
 ---
+## 📲 Download SafeHeaven App
+
+👉 (https://drive.google.com/file/d/1BiQDyEgeT4Qxi2Lo2uvCWYR1haMV-FfV/view?usp=drive_link)
 
 
 ## 👨‍💻 Author
