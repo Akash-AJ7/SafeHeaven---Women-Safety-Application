@@ -83,14 +83,6 @@ To provide a reliable and fast emergency response system that enhances women's s
 
 ---
 
-## 📸 Screenshots (Add Yours)
-
-* User Dashboard
-* SOS Alert Screen
-* Admin Dashboard
-* Officer Panel
-
----
 
 ## 👨‍💻 Author
 
