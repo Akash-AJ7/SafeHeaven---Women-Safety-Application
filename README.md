@@ -1,16 +1,114 @@
-# safeheaven
+# 🛡️ SafeHeaven – Women Safety Application
 
-A new Flutter project.
+SafeHeaven is a Flutter-based mobile application designed to enhance women's safety through real-time emergency response, live location tracking, and role-based monitoring systems.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 📱 Features
 
-A few resources to get you started if this is your first Flutter project:
+### 👩 User Module
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+* SOS emergency alert system 🚨
+* Live location tracking 📍
+* Voice-activated SOS 🎤
+* Emergency contact notification 📞
+* Real-time alert status tracking
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 👮 Officer Module
+
+* View assigned emergency cases
+* Update case status (accepted / rejected / resolved)
+* Real-time alert monitoring
+
+### 🛠️ Admin Module
+
+* Manage users and officers
+* View all alerts on map dashboard
+* Approve/reject officers
+* Monitor system activity
+
+---
+
+## 🧠 Technologies Used
+
+* **Flutter** (Frontend)
+* **Dart**
+* **Firebase Authentication**
+* **Cloud Firestore**
+* **Firebase Cloud Messaging**
+* **Google Maps API**
+
+---
+
+## 📂 Project Structure
+
+```
+lib/
+ ├── screens/        # UI screens (User, Admin, Officer)
+ ├── services/       # Backend logic (Firebase, Email, Voice)
+ ├── main.dart       # App entry point
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+* Flutter SDK
+* Android Studio / VS Code
+* Firebase Project Setup
+
+### Installation
+
+```bash
+git clone https://github.com/Akash-AJ7/SafeHeaven---Women-Safety-Application.git
+cd SafeHeaven---Women-Safety-Application
+flutter pub get
+flutter run
+```
+
+---
+
+## 🔐 Security Note
+
+Sensitive files like Firebase configuration (`google-services.json`) are not included for security reasons.
+Please configure your own Firebase project before running the app.
+
+---
+
+## 🎯 Project Objective
+
+To provide a reliable and fast emergency response system that enhances women's safety using modern mobile and cloud technologies.
+
+---
+
+## 📸 Screenshots (Add Yours)
+
+* User Dashboard
+* SOS Alert Screen
+* Admin Dashboard
+* Officer Panel
+
+---
+
+## 👨‍💻 Author
+
+**Akash A**
+
+* GitHub: https://github.com/Akash-AJ7
+
+---
+
+## ⭐ Future Enhancements
+
+* AI-based threat detection
+* Wearable device integration
+* Offline emergency alerts
+* Advanced analytics dashboard
+
+---
+
+## 📢 License
+
+This project is for educational and research purposes.
