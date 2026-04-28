@@ -1,0 +1,90 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // helpers
+    function isAdmin() { return request.auth != null && request.auth.token.role == 'admin'; }
+    // isOfficer: allow if authenticated AND there is an officers/{uid} doc with status 'approved'
+    function isOfficer() {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/officers/$(request.auth.uid))
+        && get(/databases/$(database)/documents/officers/$(request.auth.uid)).data.status == 'approved';
+    }
+    function isAuthed() { return request.auth != null; }
+
+    // Alerts
+    match /alerts/{alertId} {
+      allow get, list: if isAuthed();
+
+      allow create: if isAuthed()
+                    && request.resource.data.userId == request.auth.uid;
+
+      // Allow update if requester is owner, an approved officer, or an admin
+      // Also allow unauthenticated clients to set status to 'resolved' temporarily
+      allow update: if (
+          isAuthed() && (
+            resource.data.userId == request.auth.uid
+            || isOfficer()
+            || isAdmin()
+          )
+        ) || (
+          request.auth == null && request.resource.data.status == 'resolved'
+        );
+
+      allow delete: if isAuthed() && (
+          resource.data.userId == request.auth.uid
+          || isAdmin()
+        );
+    }
+
+    // Pending cases
+    match /pending_cases/{caseId} {
+      allow get, list: if isAuthed() && (isOfficer() || isAdmin());
+
+      // Allow create if the authenticated user is an approved officer AND
+      // either the request.officerId is the auth UID or matches the officer record's officerId value.
+      allow create: if isOfficer()
+                    && (
+                      request.resource.data.officerId == request.auth.uid
+                      || get(/databases/$(database)/documents/officers/$(request.auth.uid)).data.officerId == request.resource.data.officerId
+                    )
+                    && request.resource.data.alertId is string
+                    && request.resource.data.status == 'pending'
+                    && request.resource.data.assignedAt is timestamp;
+
+      allow update: if isAuthed() && (
+          resource.data.officerId == request.auth.uid
+          || isAdmin()
+        );
+
+      allow delete: if isAdmin();
+    }
+
+    // Case history (audit)
+    match /case_history/{docId} {
+      allow get, list: if isAuthed() && (isOfficer() || isAdmin());
+      allow create: if isAuthed() && (isOfficer() || isAdmin());
+      allow update, delete: if false;
+    }
+
+    // Users
+    match /users/{userId} {
+      // Keep get/update/delete restricted to owners/admins
+      allow get, update, delete: if isAuthed() && (request.auth.uid == userId || isAdmin());
+      allow create: if isAuthed();
+      // TEMPORARY: allow listing users so Admin "View All Users" shows entries while migrating admin auth
+      allow list: if true;
+    }
+
+    // Officers
+    match /officers/{officerId} {
+      allow get, list: if isAuthed();
+      allow create, update, delete: if isAdmin();
+    }
+
+    // Fallback
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

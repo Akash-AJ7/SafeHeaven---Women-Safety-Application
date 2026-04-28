@@ -1,0 +1,47 @@
+name: safeheaven
+description: "A new Flutter project."
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # Firebase (versions compatible with Flutter 3.5.x)
+  firebase_core: ^3.5.0
+  firebase_auth: ^5.2.0
+  cloud_firestore: ^5.2.1
+  firebase_storage: ^12.1.2
+
+  # Other packages
+  image_picker: ^1.1.2
+  location: ^6.0.1
+  url_launcher: ^6.2.6
+  mailer: ^6.0.1
+  webview_flutter: ^4.8.0
+  flutter_map: ^6.2.0
+  latlong2: ^0.9.1
+  geocoding: ^2.0.5
+  # Voice SOS feature dependencies
+  # speech_to_text removed temporarily to avoid Android Gradle incompatibilities
+  camera: ^0.11.0+1
+  video_player: ^2.5.0
+  permission_handler: ^10.4.0
+  path_provider: ^2.0.15
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+
+ 
