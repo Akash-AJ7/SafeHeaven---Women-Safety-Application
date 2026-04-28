@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "819123475747",
+    "project_id": "safeheaven-d2d70",
+    "storage_bucket": "safeheaven-d2d70.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:819123475747:android:73ebedb94f36b6277a2896",
+        "android_client_info": {
+          "package_name": "com.example.safeheaven"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBq_jp-6uciasSSmMIwLQ9UJeJnr17xrT4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
